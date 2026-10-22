@@ -435,6 +435,8 @@ html[lang="zh"] .hero h1{font-size:clamp(34px,6.2vw,84px);word-break:keep-all}
 .lm-plans{background:var(--cream);padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
 .lm-plans figure{background:#fff;border-radius:14px;padding:12px;position:relative;cursor:zoom-in;border:1px solid var(--line)}
 .lm-plans figure span{position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:99px}
+.lm-plans figure.key{grid-column:1/-1}
+.lm-plans figure.key img{max-height:220px;margin:0 auto;object-fit:contain}
 .lm-plans .note{grid-column:1/-1;font-size:12.5px;color:var(--ink-3)}
 .lm-info{padding:30px 30px 26px}
 .lm-info .ty{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t)}
@@ -1113,10 +1115,11 @@ function openLot(id){
     <div class="lm-plans">
       <figure data-zoom><span>${T("GROUND","底层")}</span><img src="${gf}" alt="Lot ${id} ground floor plan"></figure>
       <figure data-zoom><span>${T("FIRST","一楼")}</span><img src="${ff}" alt="Lot ${id} first floor plan"></figure>
+      ${lay&&lay.key?`<figure data-zoom class="key"><span>${T("LOCATION","位置")}</span><img src="${lay.key}" alt="Lot ${id} location in Novva Industrial Park"></figure>`:""}
       <p class="note">${lay?T("Layout for Lot "+id+". Tap to enlarge.","地段 "+id+" 的平面图，点击可放大。"):T("Typical "+t.name+" layout shown. Tap to enlarge. The exact plan for Lot "+id+" will be shown at your viewing.","此为 "+t.name+" 标准平面图，点击可放大。地段 "+id+" 的实际平面图将在看厂时提供。")}</p>
     </div>
     <div class="lm-info">
-      <div class="ty">${t.name} · ${T(l[2],DESC_ZH[l[2]])}</div>
+      <div class="ty">${lay&&lay.sub?lay.sub:t.name} · ${T(l[2],DESC_ZH[l[2]])}</div>
       <h3>${T("Lot ","地段 ")}${id}</h3>
       <div class="was">SPA RM ${fmt(l[6])}</div>
       <div class="net">RM ${fmt(net(l))}<small>${T("RM "+netPsf(l)+" psf","每平方尺 RM "+netPsf(l))}</small></div>
