@@ -395,7 +395,7 @@ footer p{max-width:760px;line-height:1.7}
 @media (max-width:760px){.fwa{display:none}}
 
 /* ---------- lightbox / modal ---------- */
-.lb{position:fixed;inset:0;z-index:100;background:rgba(6,12,24,.92);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lb{position:fixed;inset:0;z-index:130;background:rgba(6,12,24,.92);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
 .lb.on{display:flex;animation:fade .3s}
 .lb img{max-width:100%;max-height:92vh;border-radius:12px;background:#fff}
 .modal{position:fixed;inset:0;z-index:110;background:rgba(6,12,24,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
@@ -428,6 +428,29 @@ html[lang="zh"] .hero h1{font-size:clamp(34px,6.2vw,84px);word-break:keep-all}
 .lot[aria-pressed="true"] .was{color:rgba(255,255,255,.6)}
 .promo{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 18px;border-radius:99px;background:linear-gradient(135deg,#b9854a,#9a6a34);color:#fff;font-weight:700;font-size:15px;box-shadow:0 8px 24px rgba(168,118,62,.3)}
 .qr-stats .was{display:block;font-size:12px;color:var(--ink-3)}
+/* ---------- lot modal ---------- */
+.lotm .box{max-width:1040px;text-align:left;padding:0;overflow:hidden;max-height:92vh;display:flex;flex-direction:column}
+.lotm .x{z-index:2;background:#fff;box-shadow:var(--shadow)}
+.lm{display:grid;grid-template-columns:1.25fr 1fr;overflow:auto}
+.lm-plans{background:var(--cream);padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.lm-plans figure{background:#fff;border-radius:14px;padding:12px;position:relative;cursor:zoom-in;border:1px solid var(--line)}
+.lm-plans figure span{position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:99px}
+.lm-plans .note{grid-column:1/-1;font-size:12.5px;color:var(--ink-3)}
+.lm-info{padding:30px 30px 26px}
+.lm-info .ty{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t)}
+.lm-info h3{font-size:40px;letter-spacing:-.03em;margin:4px 0 14px}
+.lm-info .was{font-size:15px;color:var(--ink-3)}
+.lm-info .net{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.lm-info .net small{font-size:14px;color:var(--bronze);font-weight:700;margin-left:6px;letter-spacing:0}
+.lm-info .tag{display:inline-block;font-size:12px;font-weight:700;color:var(--bronze);background:var(--bronze-soft);padding:4px 10px;border-radius:99px;margin-top:8px}
+.lm-info dl{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin:20px 0}
+.lm-info dl div{background:var(--cream);padding:12px 14px}
+.lm-info dt{font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.lm-info dd{font-size:16px;font-weight:700}
+.lm-info .acts{display:grid;gap:10px}
+.lm-info .acts .btn{width:100%}
+.lm-info .full{font-size:13px;color:#b3452f;font-weight:600;text-align:center}
+@media (max-width:820px){.lm{grid-template-columns:1fr}.lm-info{padding:22px 18px}.lm-plans{padding:16px 14px}.lm-info h3{font-size:32px}}
 /* ---------- agent card ---------- */
 .agent{display:flex;gap:18px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(200,149,90,.35);border-radius:20px;padding:18px;margin-top:8px}
 .agent img{width:76px;height:76px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--bronze-2);background:#fff}
@@ -721,7 +744,7 @@ html[lang="zh"] .hero h1{font-size:clamp(34px,6.2vw,84px);word-break:keep-all}
     <div class="center">
       <span class="step-tag rv" data-zh="第 6 步 / 共 6 步 · 只有 21 间">Step 6 of 6 · Only 21</span>
       <h2 class="rv d1" data-zh="21 个地段，<span class=&quot;gold&quot;>选出你的。</span>">21 lots. <span class="gold">Choose yours.</span></h2>
-      <p class="lead rv d2" data-zh="CRE8 永远只有 21 间。点选最多 3 个你想看的地段，我们会在看厂时为你准备好。">There will only ever be 21 CRE8 factories. Tap up to 3 lots you'd like to see — we'll prepare them for your viewing.</p>
+      <p class="lead rv d2" data-zh="CRE8 永远只有 21 间。点任何一个地段，就能看到它的平面图和价格；再把最多 3 个加入你的看厂清单。">There will only ever be 21 CRE8 factories. Tap any lot to see its layout and price, then add up to 3 to your viewing list.</p>
       <div class="promo rv d3" data-zh="现有配套：回扣 10% + 10% · 净价 RM 7.988M 起">Current package: Rebate 10% + 10% · Net from RM 7.988M</div>
     </div>
     <div class="legend">
@@ -840,6 +863,10 @@ html[lang="zh"] .hero h1{font-size:clamp(34px,6.2vw,84px);word-break:keep-all}
 <div class="mbar" id="mbar">
   <a href="#book" class="btn btn-gold" data-zh="预约看厂">Book a Viewing</a>
   <a class="btn wa" id="mwa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg></a>
+</div>
+
+<div class="modal lotm" id="lotModal" role="dialog" aria-modal="true" aria-label="Lot details">
+  <div class="box"><button class="x" id="lotX" aria-label="Close">×</button><div id="lotBody"></div></div>
 </div>
 
 <div class="lb" id="lb" role="dialog" aria-label="Enlarged image"><img id="lbImg" alt=""></div>
@@ -1062,15 +1089,54 @@ function renderResult(){
 function renderLots(){
   $("#lots").innerHTML=LOTS.map(l=>`<button class="lot t${l[1]}" data-lot="${l[0]}" data-type="${l[1]}" aria-pressed="${state.lots.includes(l[0])}"><span class="sel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><path d="M5 12l5 5 9-10"/></svg></span><span class="ty">Type ${l[1]}${l[1]==="C"?T(" · Corner"," · 角头"):""}</span><span class="no">${l[0]}</span><span class="ac">${l[3].toFixed(2)} ${T("ac","英亩")}</span><span class="was">${M(l[6])}</span><span class="pr">${M(net(l))}</span></button>`).join("");
   $("#ptable").innerHTML=LOTS.map(l=>`<tr><td><b>${l[0]}</b></td><td>${l[1]}</td><td>${T(l[2],DESC_ZH[l[2]])}</td><td>${l[3].toFixed(2)}</td><td>${fmt(l[4])}</td><td>${fmt(l[5])}</td><td class="was">${fmt(l[6])}</td><td class="p">${fmt(net(l))}</td><td>${netPsf(l)}</td></tr>`).join("");
-  $$(".lot").forEach(b=>b.addEventListener("click",()=>{
-    const id=b.dataset.lot, on=b.getAttribute("aria-pressed")==="true";
-    if(!on&&state.lots.length>=3){b.animate([{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"none"}],{duration:250});return}
-    b.setAttribute("aria-pressed",!on);
-    state.lots=on?state.lots.filter(x=>x!==id):[...state.lots,id];
-    updateLots(true);
-  }));
+  $$(".lot").forEach(b=>b.addEventListener("click",()=>openLot(b.dataset.lot)));
   const f=($("#lotFilter button.on")||{}).dataset; if(f)filterLots(f.f);
 }
+/* ---------- lot detail (layout per lot) ---------- */
+// Per-lot layouts: add an entry per lot when its own plan is available, e.g.
+//   "55": { gf: "layouts/55-ground.jpg", ff: "layouts/55-first.jpg" }
+// Lots without an entry show their type's typical layout.
+const LAYOUTS = {};
+let curLot=null;
+function toggleLot(id){
+  const on=state.lots.includes(id);
+  if(!on&&state.lots.length>=3)return false;
+  state.lots=on?state.lots.filter(x=>x!==id):[...state.lots,id];
+  $$(".lot").forEach(b=>b.setAttribute("aria-pressed",state.lots.includes(b.dataset.lot)));
+  updateLots(true); return true;
+}
+function openLot(id){
+  curLot=id;
+  const l=LOTS.find(x=>x[0]===id), k=l[1], t=TYPES[k], lay=LAYOUTS[id], gf=lay?lay.gf:t.gf, ff=lay?lay.ff:t.ff;
+  const sel=state.lots.includes(id), full=!sel&&state.lots.length>=3;
+  $("#lotBody").innerHTML=`<div class="lm t${k}">
+    <div class="lm-plans">
+      <figure data-zoom><span>${T("GROUND","底层")}</span><img src="${gf}" alt="Lot ${id} ground floor plan"></figure>
+      <figure data-zoom><span>${T("FIRST","一楼")}</span><img src="${ff}" alt="Lot ${id} first floor plan"></figure>
+      <p class="note">${lay?T("Layout for Lot "+id+". Tap to enlarge.","地段 "+id+" 的平面图，点击可放大。"):T("Typical "+t.name+" layout shown. Tap to enlarge. The exact plan for Lot "+id+" will be shown at your viewing.","此为 "+t.name+" 标准平面图，点击可放大。地段 "+id+" 的实际平面图将在看厂时提供。")}</p>
+    </div>
+    <div class="lm-info">
+      <div class="ty">${t.name} · ${T(l[2],DESC_ZH[l[2]])}</div>
+      <h3>${T("Lot ","地段 ")}${id}</h3>
+      <div class="was">SPA RM ${fmt(l[6])}</div>
+      <div class="net">RM ${fmt(net(l))}<small>${T("RM "+netPsf(l)+" psf","每平方尺 RM "+netPsf(l))}</small></div>
+      <span class="tag">${T("Net price after 10% + 10% rebate","已扣 10% + 10% 回扣的净价")}</span>
+      <dl><div><dt>${T("Land","土地")}</dt><dd>${l[3].toFixed(2)} ${T("acre","英亩")}</dd></div><div><dt>${T("Land area","土地面积")}</dt><dd>${fmt(l[4])} ${T("sq ft","平方尺")}</dd></div><div><dt>${T("Built-up","建筑面积")}</dt><dd>${fmt(l[5])} ${T("sq ft","平方尺")}</dd></div><div><dt>${T("Type","类型")}</dt><dd>${L(t.sub).split(" · ")[0]}</dd></div></dl>
+      <div class="acts">
+        <button class="btn btn-gold" id="lmBook">${T("Book a viewing for Lot "+id,"预约看地段 "+id)} →</button>
+        <button class="btn btn-line" id="lmToggle" ${full?"disabled":""}>${sel?T("✓ In your viewing list (remove)","✓ 已在看厂清单（移除）"):T("+ Add to viewing list","+ 加入看厂清单")}</button>
+        ${full?`<p class="full">${T("Your list already has 3 lots. Remove one to add this.","清单已有 3 个地段，请先移除一个。")}</p>`:""}
+      </div>
+    </div>
+  </div>`;
+  bindDynamic($("#lotBody"));
+  $("#lmToggle").addEventListener("click",()=>{toggleLot(id);openLot(id)});
+  $("#lmBook").addEventListener("click",()=>{if(!state.lots.includes(id))toggleLot(id);setFormType(k);closeLot();$("#book").scrollIntoView({behavior:"smooth"})});
+  $("#lotModal").classList.add("on");
+}
+function closeLot(){curLot=null;$("#lotModal").classList.remove("on")}
+$("#lotX").addEventListener("click",closeLot);
+$("#lotModal").addEventListener("click",e=>{if(e.target.id==="lotModal")closeLot()});
 function updateLots(fromClick){
   const n=state.lots.length;
   $("#tray").classList.toggle("show",n>0);
@@ -1131,7 +1197,7 @@ document.addEventListener("mouseout",e=>{
 });
 $("#exitX").addEventListener("click",()=>$("#exitModal").classList.remove("on"));
 $("#exitModal").addEventListener("click",e=>{if(e.target.id==="exitModal")e.currentTarget.classList.remove("on")});
-addEventListener("keydown",e=>{if(e.key==="Escape"){$("#exitModal").classList.remove("on");$("#lb").classList.remove("on")}});
+addEventListener("keydown",e=>{if(e.key==="Escape"){if($("#lb").classList.contains("on"))return $("#lb").classList.remove("on");$("#exitModal").classList.remove("on");closeLot()}});
 
 /* ---------- language switch ---------- */
 const TITLES={en:document.title,zh:"CRE8 @ Novva — 21 间独立式厂房 · Sungai Buaya"};
@@ -1148,7 +1214,7 @@ function setLang(l){
     el.placeholder=l==="zh"?el.dataset.zhPh:el.dataset.enPh;
   });
   $$(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===l));
-  renderDiag(); calc(); renderTypes(); renderLots(); updateLots(false); renderResult(); setQuickLinks();
+  renderDiag(); calc(); renderTypes(); renderLots(); updateLots(false); renderResult(); setQuickLinks(); if(curLot)openLot(curLot);
   try{localStorage.setItem("cre8_lang",l)}catch(_){}
 }
 $$(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
