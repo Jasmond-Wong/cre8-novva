@@ -1098,7 +1098,28 @@ function renderLots(){
 // Per-lot layouts: add an entry per lot when its own plan is available, e.g.
 //   "55": { gf: "layouts/55-ground.jpg", ff: "layouts/55-first.jpg" }
 // Lots without an entry show their type's typical layout.
-const LAYOUTS = {};
+const LAYOUTS = {
+  "8":    { sub: "Type B2", gf: "layouts/lot-8-gf.jpg", ff: "layouts/lot-8-ff.jpg", key: "layouts/lot-8-key.jpg" },
+  "9":    { sub: "Type B2", gf: "layouts/lot-9-gf.jpg", ff: "layouts/lot-9-ff.jpg", key: "layouts/lot-9-key.jpg" },
+  "53A":  { sub: "Type C1", gf: "layouts/lot-53A-gf.jpg", ff: "layouts/lot-53A-ff.jpg", key: "layouts/lot-53A-key.jpg" },
+  "88":   { sub: "Type C", gf: "layouts/lot-88-gf.jpg", ff: "layouts/lot-88-ff.jpg", key: "layouts/lot-88-key.jpg" },
+  "91":   { sub: "Type C", gf: "layouts/lot-91-gf.jpg", ff: "layouts/lot-91-ff.jpg", key: "layouts/lot-91-key.jpg" },
+  "55":   { sub: "Type A", gf: "layouts/lot-55-gf.jpg", ff: "layouts/lot-55-ff.jpg", key: "layouts/lot-55-key.jpg" },
+  "56":   { sub: "Type A", gf: "layouts/lot-56-gf.jpg", ff: "layouts/lot-56-ff.jpg", key: "layouts/lot-56-key.jpg" },
+  "26":   { sub: "Type B3", gf: "layouts/lot-26-gf.jpg", ff: "layouts/lot-26-ff.jpg", key: "layouts/lot-26-key.jpg" },
+  "27":   { sub: "Type B3", gf: "layouts/lot-27-gf.jpg", ff: "layouts/lot-27-ff.jpg", key: "layouts/lot-27-key.jpg" },
+  "87":   { sub: "Type C", gf: "layouts/lot-87-gf.jpg", ff: "layouts/lot-87-ff.jpg", key: "layouts/lot-87-key.jpg" },
+  "60":   { sub: "Type A", gf: "layouts/lot-60-gf.jpg", ff: "layouts/lot-60-ff.jpg", key: "layouts/lot-60-key.jpg" },
+  "171":  { sub: "Type A", gf: "layouts/lot-171-gf.jpg", ff: "layouts/lot-171-ff.jpg", key: "layouts/lot-171-key.jpg" },
+  "3A":   { sub: "Type B", gf: "layouts/lot-3A-gf.jpg", ff: "layouts/lot-3A-ff.jpg", key: "layouts/lot-3A-key.jpg" },
+  "11":   { sub: "Type B", gf: "layouts/lot-11-gf.jpg", ff: "layouts/lot-11-ff.jpg", key: "layouts/lot-11-key.jpg" },
+  "17":   { sub: "Type B", gf: "layouts/lot-17-gf.jpg", ff: "layouts/lot-17-ff.jpg", key: "layouts/lot-17-key.jpg" },
+  "32":  { sub: "Type B1", gf: "layouts/lot-32-gf.jpg",  ff: "layouts/lot-32-ff.jpg",  key: "layouts/lot-32-key.jpg" },
+  "62":  { sub: "Type C1", gf: "layouts/lot-62-gf.jpg",  ff: "layouts/lot-62-ff.jpg",  key: "layouts/lot-62-key.jpg" },
+  "96":  { sub: "Type C2", gf: "layouts/lot-96-gf.jpg",  ff: "layouts/lot-96-ff.jpg",  key: "layouts/lot-96-key.jpg" },
+  "121": { sub: "Type C1", gf: "layouts/lot-121-gf.jpg", ff: "layouts/lot-121-ff.jpg", key: "layouts/lot-121-key.jpg" },
+  "176": { sub: "Type C1", gf: "layouts/lot-176-gf.jpg", ff: "layouts/lot-176-ff.jpg", key: "layouts/lot-176-key.jpg" }
+};
 let curLot=null;
 function toggleLot(id){
   const on=state.lots.includes(id);
